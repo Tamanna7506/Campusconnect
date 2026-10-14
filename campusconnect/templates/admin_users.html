@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users - CampusConnect</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7fb;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+            color: white;
+            padding: 18px 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar h2 {
+            font-size: 24px;
+        }
+
+        .dashboard-btn {
+            background: white;
+            color: #1d4ed8;
+            text-decoration: none;
+            padding: 9px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 35px auto;
+        }
+
+        .top-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .top-section h1 {
+            color: #1f2937;
+            font-size: 30px;
+        }
+
+        .user-count {
+            background: #dbeafe;
+            color: #1d4ed8;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .users-box {
+            background: white;
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #eff6ff;
+            color: #1e3a8a;
+            padding: 14px;
+            text-align: left;
+        }
+
+        td {
+            padding: 14px;
+            border-bottom: 1px solid #e5e7eb;
+            color: #374151;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .role {
+            display: inline-block;
+            padding: 6px 11px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .student {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .admin {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 30px;
+            color: #6b7280;
+        }
+
+        @media (max-width: 700px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+
+            .container {
+                width: 95%;
+            }
+
+            .top-section {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <h2>CampusConnect</h2>
+        <a href="{{ url_for('admin_dashboard') }}" class="dashboard-btn">
+            ← Dashboard
+        </a>
+    </div>
+
+    <div class="container">
+
+        <div class="top-section">
+            <h1>Manage Users</h1>
+
+            <div class="user-count">
+                Total Users: {{ users|length }}
+            </div>
+        </div>
+
+        <div class="users-box">
+
+            {% if users %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.email }}</td>
+
+                        <td>
+                            {% if user.role == 'admin' %}
+                                <span class="role admin">Admin</span>
+                            {% else %}
+                                <span class="role student">Student</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            {% else %}
+                <div class="empty">
+                    No users found.
+                </div>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</body>
+</html>

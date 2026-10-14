@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Admin Dashboard | CampusConnect</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #f4f7ff;
+        }
+
+        .navbar {
+            height: 70px;
+            padding: 0 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background: linear-gradient(
+                90deg,
+                #1d4ed8,
+                #3b82f6,
+                #60a5fa
+            );
+
+            color: white;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: #dbeafe;
+        }
+
+        .user-area {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .logout {
+            text-decoration: none;
+            color: white;
+            padding: 8px 15px;
+            border: 1px solid rgba(255,255,255,0.5);
+            border-radius: 8px;
+            font-size: 13px;
+        }
+
+        .logout:hover {
+            background: rgba(255,255,255,0.12);
+        }
+
+        .main {
+            padding: 40px;
+        }
+
+        .welcome {
+            color: #172554;
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #64748b;
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow:
+                0 8px 25px
+                rgba(30,64,175,0.08);
+
+            text-decoration: none;
+            display: block;
+            color: inherit;
+
+            border: 1px solid #eef2ff;
+
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 12px 30px
+                rgba(30,64,175,0.13);
+        }
+
+        .icon {
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #1e293b;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: #64748b;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 1050px) {
+
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .main {
+                padding: 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Campus<span>Connect</span>
+        </div>
+
+        <div class="user-area">
+
+            <span>
+                Administrator
+            </span>
+
+            <a
+                href="{{ url_for('logout') }}"
+                class="logout"
+            >
+                Logout
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <main class="main">
+
+        <h1 class="welcome">
+            Welcome, {{ name }}! 👋
+        </h1>
+
+        <p class="subtitle">
+            Manage campus services, users and daily activities.
+        </p>
+
+
+        <div class="cards">
+
+
+            <!-- MANAGE COMPLAINTS -->
+
+            <a
+                href="{{ url_for('admin_complaints') }}"
+                class="card"
+            >
+
+                <div class="icon">
+                    🛠️
+                </div>
+
+                <h3>
+                    Manage Complaints
+                </h3>
+
+                <p>
+                    Review student complaints and update their status.
+                </p>
+
+            </a>
+
+
+            <!-- MANAGE NOTICES -->
+
+            <a
+                href="{{ url_for('admin_notices') }}"
+                class="card"
+            >
+
+                <div class="icon">
+                    📢
+                </div>
+
+                <h3>
+                    Manage Notices
+                </h3>
+
+                <p>
+                    Create and manage important college announcements.
+                </p>
+
+            </a>
+
+
+            <!-- LOST AND FOUND -->
+
+            <a
+                href="{{ url_for('admin_lost_found') }}"
+                class="card"
+            >
+
+                <div class="icon">
+                    🔎
+                </div>
+
+                <h3>
+                    Lost &amp; Found
+                </h3>
+
+                <p>
+                    Manage reported lost and found items.
+                </p>
+
+            </a>
+
+
+            <!-- MANAGE USERS -->
+
+            <a
+                href="{{ url_for('admin_users') }}" class="card"
+                class="card"
+            >
+
+                <div class="icon">
+                    👥
+                </div>
+
+                <h3>
+                    Manage Users
+                </h3>
+
+                <p>
+                    View and manage student accounts.
+                </p>
+
+            </a>
+
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>
