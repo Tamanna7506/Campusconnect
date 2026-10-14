@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My Profile | CampusConnect</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+
+        body {
+            min-height: 100vh;
+            background: #f4f7ff;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+
+            height: 70px;
+
+            padding: 0 40px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            background: linear-gradient(
+                90deg,
+                #1d4ed8,
+                #3b82f6,
+                #60a5fa
+            );
+
+            color: white;
+        }
+
+
+        .logo {
+
+            font-size: 24px;
+
+            font-weight: 700;
+        }
+
+
+        .logo span {
+
+            color: #dbeafe;
+        }
+
+
+        .dashboard-btn {
+
+            text-decoration: none;
+
+            color: white;
+
+            padding: 8px 15px;
+
+            border: 1px solid rgba(
+                255,
+                255,
+                255,
+                0.5
+            );
+
+            border-radius: 8px;
+
+            font-size: 13px;
+        }
+
+
+        .dashboard-btn:hover {
+
+            background: rgba(
+                255,
+                255,
+                255,
+                0.12
+            );
+        }
+
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .main {
+
+            width: 90%;
+
+            max-width: 750px;
+
+            margin: 40px auto;
+        }
+
+
+        .heading {
+
+            color: #172554;
+
+            font-size: 28px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .subtitle {
+
+            color: #64748b;
+
+            font-size: 15px;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* =========================
+           PROFILE CARD
+        ========================= */
+
+        .profile-card {
+
+            background: white;
+
+            border-radius: 15px;
+
+            padding: 30px;
+
+            box-shadow:
+                0 8px 25px
+                rgba(30, 64, 175, 0.08);
+
+            border: 1px solid #eef2ff;
+        }
+
+
+        .profile-top {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+            padding-bottom: 25px;
+
+            margin-bottom: 25px;
+
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+
+        .profile-icon {
+
+            width: 75px;
+
+            height: 75px;
+
+            border-radius: 50%;
+
+            background: #dbeafe;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 35px;
+        }
+
+
+        .profile-top h2 {
+
+            color: #1e293b;
+
+            margin-bottom: 5px;
+
+            font-size: 22px;
+        }
+
+
+        .profile-top p {
+
+            color: #64748b;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           DETAILS
+        ========================= */
+
+        .detail {
+
+            margin-bottom: 20px;
+        }
+
+
+        .detail:last-child {
+
+            margin-bottom: 0;
+        }
+
+
+        .detail-label {
+
+            display: block;
+
+            color: #64748b;
+
+            font-size: 13px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .detail-value {
+
+            background: #f8fafc;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 8px;
+
+            padding: 12px 14px;
+
+            color: #1e293b;
+
+            font-size: 14px;
+        }
+
+
+        .role {
+
+            display: inline-block;
+
+            background: #dcfce7;
+
+            color: #166534;
+
+            padding: 6px 12px;
+
+            border-radius: 20px;
+
+            font-size: 13px;
+
+            font-weight: 600;
+        }
+
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .main {
+                width: 92%;
+                margin: 25px auto;
+            }
+
+            .profile-card {
+                padding: 22px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav class="navbar">
+
+
+        <div class="logo">
+
+            Campus<span>Connect</span>
+
+        </div>
+
+
+        <a
+            href="{{ url_for('student_dashboard') }}"
+            class="dashboard-btn"
+        >
+
+            ← Dashboard
+
+        </a>
+
+
+    </nav>
+
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
+
+    <main class="main">
+
+
+        <h1 class="heading">
+            My Profile
+        </h1>
+
+
+        <p class="subtitle">
+
+            View your CampusConnect account details.
+
+        </p>
+
+
+        <div class="profile-card">
+
+
+            <div class="profile-top">
+
+
+                <div class="profile-icon">
+                    👤
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        {{ user.name }}
+                    </h2>
+
+
+                    <p>
+                        CampusConnect Student
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- NAME -->
+
+            <div class="detail">
+
+                <span class="detail-label">
+                    Full Name
+                </span>
+
+
+                <div class="detail-value">
+
+                    {{ user.name }}
+
+                </div>
+
+            </div>
+
+
+
+            <!-- EMAIL -->
+
+            <div class="detail">
+
+                <span class="detail-label">
+                    Email Address
+                </span>
+
+
+                <div class="detail-value">
+
+                    {{ user.email }}
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ROLE -->
+
+            <div class="detail">
+
+                <span class="detail-label">
+                    Account Role
+                </span>
+
+
+                <span class="role">
+
+                    {{ user.role|capitalize }}
+
+                </span>
+
+            </div>
+
+
+
+            <!-- USER ID -->
+
+            <div class="detail">
+
+                <span class="detail-label">
+                    User ID
+                </span>
+
+
+                <div class="detail-value">
+
+                    {{ user.id }}
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </main>
+
+
+</body>
+
+</html>

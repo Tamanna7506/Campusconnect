@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Registration | CampusConnect</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(
+                135deg,
+                #eef4ff,
+                #f5f0ff,
+                #eaf7ff
+            );
+            padding: 25px;
+        }
+
+        .container {
+            width: 900px;
+            min-height: 560px;
+            display: flex;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(52, 80, 150, 0.18);
+        }
+
+        .left-section {
+            width: 45%;
+            padding: 55px 45px;
+            color: white;
+            background: linear-gradient(
+                135deg,
+                #1d4ed8 0%,
+                #3b82f6 45%,
+                #bfdbfe 100%
+            );
+            position: relative;
+            overflow: hidden;
+        }
+
+        .circle-one,
+        .circle-two {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.10);
+        }
+
+        .circle-one {
+            width: 190px;
+            height: 190px;
+            top: -80px;
+            right: -65px;
+        }
+
+        .circle-two {
+            width: 240px;
+            height: 240px;
+            bottom: -130px;
+            left: -100px;
+        }
+
+        .logo {
+            position: relative;
+            font-size: 29px;
+            font-weight: 700;
+            margin-bottom: 65px;
+        }
+
+        .logo span {
+            color: #dbeafe;
+        }
+
+        .left-section h1 {
+            position: relative;
+            font-size: 34px;
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+
+        .description {
+            position: relative;
+            color: #eff6ff;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        .feature {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.16);
+            font-size: 20px;
+        }
+
+        .feature-text strong {
+            display: block;
+            font-size: 14px;
+        }
+
+        .feature-text small {
+            color: #eff6ff;
+            font-size: 12px;
+        }
+
+        .right-section {
+            width: 55%;
+            padding: 50px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .welcome {
+            color: #172554;
+            font-size: 29px;
+            margin-bottom: 7px;
+        }
+
+        .subtitle {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 28px;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+        .label {
+            display: block;
+            color: #334155;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .input {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #d7deea;
+            border-radius: 10px;
+            outline: none;
+            font-size: 14px;
+            color: #1e293b;
+        }
+
+        .input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.10);
+        }
+
+        .register-btn {
+            width: 100%;
+            padding: 14px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            background: linear-gradient(
+                90deg,
+                #2563eb,
+                #6366f1,
+                #7c3aed
+            );
+        }
+
+        .error {
+            background: #fef2f2;
+            color: #b91c1c;
+            border: 1px solid #fecaca;
+            padding: 11px 13px;
+            border-radius: 9px;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 18px;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .login-link a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 22px;
+            font-size: 11px;
+            color: #94a3b8;
+        }
+
+        @media (max-width: 800px) {
+            .container {
+                width: 95%;
+                flex-direction: column;
+            }
+
+            .left-section,
+            .right-section {
+                width: 100%;
+            }
+
+            .left-section {
+                padding: 40px;
+            }
+
+            .right-section {
+                padding: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <section class="left-section">
+            <div class="circle-one"></div>
+            <div class="circle-two"></div>
+
+            <div class="logo">
+                Campus<span>Connect</span>
+            </div>
+
+            <h1>
+                Join the Campus.<br>
+                Stay Connected.
+            </h1>
+
+            <p class="description">
+                Create your student account and access campus support,
+                notices, Lost & Found and other essential services.
+            </p>
+
+            <div class="feature">
+                <div class="feature-icon">🎓</div>
+                <div class="feature-text">
+                    <strong>Student Account</strong>
+                    <small>One account for your campus services.</small>
+                </div>
+            </div>
+        </section>
+
+        <section class="right-section">
+
+            <h2 class="welcome">
+                Create Account
+            </h2>
+
+            <p class="subtitle">
+                Register as a student to continue to CampusConnect.
+            </p>
+
+            {% if error %}
+                <div class="error">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+            <form action="{{ url_for('register') }}" method="POST">
+
+                <div class="input-group">
+                    <label class="label" for="name">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        class="input"
+                        placeholder="Enter your full name"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label class="label" for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        class="input"
+                        placeholder="Enter your email address"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label class="label" for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        class="input"
+                        placeholder="Create a password"
+                        minlength="6"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label class="label" for="confirm_password">
+                        Confirm Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="confirm_password"
+                        name="confirm_password"
+                        class="input"
+                        placeholder="Re-enter your password"
+                        minlength="6"
+                        required
+                    >
+                </div>
+
+                <button
+                    type="submit"
+                    class="register-btn"
+                >
+                    Create Student Account →
+                </button>
+
+            </form>
+
+            <div class="login-link">
+                Already have an account?
+                <a href="{{ url_for('home') }}">Login here</a>
+            </div>
+
+            <p class="footer">
+                CampusConnect • Student Registration • 2026
+            </p>
+
+        </section>
+
+    </div>
+
+</body>
+
+</html>

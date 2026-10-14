@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Manage Lost & Found | CampusConnect</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef4ff,
+                    #f8f9ff
+                );
+
+            color: #1f2937;
+
+            padding: 40px;
+        }
+
+
+        .container {
+
+            max-width: 1050px;
+
+            margin: auto;
+        }
+
+
+        /* BACK */
+
+        .back-btn {
+
+            display: inline-block;
+
+            margin-bottom: 22px;
+
+            text-decoration: none;
+
+            color: #2563eb;
+
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+
+        /* HEADING */
+
+        .heading {
+
+            margin-bottom: 30px;
+        }
+
+
+        .heading h1 {
+
+            color: #172554;
+
+            font-size: 32px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .heading p {
+
+            color: #6b7280;
+
+            font-size: 15px;
+        }
+
+
+        /* CARD */
+
+        .item-card {
+
+            background: white;
+
+            border: 1px solid #e5e7eb;
+
+            border-radius: 16px;
+
+            padding: 24px;
+
+            margin-bottom: 20px;
+
+            box-shadow:
+                0 8px 25px
+                rgba(
+                    30,
+                    64,
+                    175,
+                    0.07
+                );
+        }
+
+
+        .top-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: flex-start;
+
+            gap: 18px;
+
+            margin-bottom: 16px;
+        }
+
+
+        .item-name {
+
+            color: #111827;
+
+            font-size: 21px;
+
+            font-weight: bold;
+
+            margin-bottom: 7px;
+        }
+
+
+        .meta {
+
+            color: #6b7280;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        /* TYPE */
+
+        .type-badge {
+
+            padding: 7px 13px;
+
+            border-radius: 20px;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            white-space: nowrap;
+        }
+
+
+        .lost {
+
+            background: #fee2e2;
+
+            color: #b91c1c;
+        }
+
+
+        .found {
+
+            background: #dcfce7;
+
+            color: #15803d;
+        }
+
+
+        /* DETAILS */
+
+        .details {
+
+            color: #4b5563;
+
+            font-size: 14px;
+
+            line-height: 1.9;
+        }
+
+
+        .details strong {
+
+            color: #374151;
+        }
+
+
+        .description {
+
+            color: #4b5563;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+
+            margin-top: 8px;
+        }
+
+
+        /* PHOTO */
+
+        .photo-section {
+
+            margin-top: 16px;
+        }
+
+
+        .photo-label {
+
+            color: #374151;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+        }
+
+
+        .photo-section img {
+
+            width: 220px;
+
+            max-height: 180px;
+
+            object-fit: cover;
+
+            border-radius: 10px;
+
+            border: 1px solid #e5e7eb;
+        }
+
+
+        /* STUDENT */
+
+        .student-section {
+
+            margin-top: 20px;
+
+            padding-top: 15px;
+
+            border-top: 1px solid #eef2f7;
+
+            color: #64748b;
+
+            font-size: 13px;
+
+            line-height: 1.7;
+        }
+
+
+        .student-section strong {
+
+            color: #374151;
+        }
+
+
+        /* STATUS UPDATE */
+
+        .update-section {
+
+            margin-top: 20px;
+
+            padding-top: 18px;
+
+            border-top: 1px solid #eef2f7;
+        }
+
+
+        .update-section h3 {
+
+            color: #1f2937;
+
+            font-size: 16px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .update-form {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .update-form select {
+
+            padding: 10px 12px;
+
+            border: 1px solid #d1d5db;
+
+            border-radius: 8px;
+
+            font-size: 14px;
+
+            outline: none;
+
+            background: white;
+        }
+
+
+        .update-form select:focus {
+
+            border-color: #3b82f6;
+        }
+
+
+        .update-btn {
+
+            border: none;
+
+            padding: 10px 18px;
+
+            border-radius: 8px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2563eb,
+                    #4f46e5
+                );
+
+            color: white;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+
+        .update-btn:hover {
+
+            opacity: 0.92;
+        }
+
+
+        /* NO ITEMS */
+
+        .no-items {
+
+            background: white;
+
+            border-radius: 16px;
+
+            padding: 55px 30px;
+
+            text-align: center;
+
+            color: #6b7280;
+
+            box-shadow:
+                0 8px 25px
+                rgba(0,0,0,0.05);
+        }
+
+
+        .no-items .icon {
+
+            font-size: 48px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .no-items h2 {
+
+            color: #1f2937;
+
+            margin-bottom: 8px;
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 700px) {
+
+            body {
+
+                padding: 20px;
+            }
+
+
+            .top-row {
+
+                flex-direction: column;
+            }
+
+
+            .update-form {
+
+                align-items: stretch;
+
+                flex-direction: column;
+            }
+
+
+            .update-form select,
+            .update-btn {
+
+                width: 100%;
+            }
+
+
+            .photo-section img {
+
+                width: 100%;
+
+                max-width: 300px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+    <!-- BACK -->
+
+    <a
+        href="{{ url_for('admin_dashboard') }}"
+        class="back-btn"
+    >
+
+        ← Back to Dashboard
+
+    </a>
+
+
+    <!-- HEADING -->
+
+    <div class="heading">
+
+        <h1>
+
+            Manage Lost &amp; Found
+
+        </h1>
+
+
+        <p>
+
+            View student reports and update their status.
+
+        </p>
+
+    </div>
+
+
+
+    {% if items %}
+
+
+        {% for item in items %}
+
+
+            <div class="item-card">
+
+
+                <!-- TOP -->
+
+                <div class="top-row">
+
+
+                    <div>
+
+
+                        <div class="item-name">
+
+                            {{ item.item_name }}
+
+                        </div>
+
+
+                        <div class="meta">
+
+                            Report #{{ item.id }}
+
+                            &nbsp; • &nbsp;
+
+                            {{ item.created_at }}
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    {% if item.type == "Lost" %}
+
+                        <div class="type-badge lost">
+
+                            Lost
+
+                        </div>
+
+                    {% else %}
+
+                        <div class="type-badge found">
+
+                            Found
+
+                        </div>
+
+                    {% endif %}
+
+
+                </div>
+
+
+
+                <!-- DETAILS -->
+
+                <div class="details">
+
+
+                    <strong>
+
+                        Location:
+
+                    </strong>
+
+                    {{ item.location }}
+
+
+                    <br>
+
+
+                    <strong>
+
+                        Status:
+
+                    </strong>
+
+                    {{ item.status }}
+
+
+                </div>
+
+
+
+                <!-- DESCRIPTION -->
+
+                <div class="description">
+
+
+                    <strong>
+
+                        Description:
+
+                    </strong>
+
+
+                    {{ item.description }}
+
+
+                </div>
+
+
+
+                <!-- PHOTO -->
+
+                {% if item.photo %}
+
+
+                    <div class="photo-section">
+
+
+                        <div class="photo-label">
+
+                            Attached Photo
+
+                        </div>
+
+
+                        <a
+                            href="{{ url_for('uploaded_file', filename=item.photo) }}"
+                            target="_blank"
+                        >
+
+
+                            <img
+                                src="{{ url_for('uploaded_file', filename=item.photo) }}"
+                                alt="Lost and Found Item"
+                            >
+
+
+                        </a>
+
+
+                    </div>
+
+
+                {% endif %}
+
+
+
+                <!-- STUDENT -->
+
+                <div class="student-section">
+
+
+                    <strong>
+
+                        Submitted by:
+
+                    </strong>
+
+
+                    {{ item.student_name }}
+
+
+                    <br>
+
+
+                    <strong>
+
+                        Email:
+
+                    </strong>
+
+
+                    {{ item.student_email }}
+
+
+                </div>
+
+
+
+                <!-- UPDATE -->
+
+                <div class="update-section">
+
+
+                    <h3>
+
+                        Update Status
+
+                    </h3>
+
+
+                    <form
+                        action="{{ url_for('update_lost_found', item_id=item.id) }}"
+                        method="POST"
+                        class="update-form"
+                    >
+
+
+                        <select
+                            name="status"
+                            required
+                        >
+
+
+                            <option
+                                value="Reported"
+                                {% if item.status == "Reported" %}
+                                    selected
+                                {% endif %}
+                            >
+
+                                Reported
+
+                            </option>
+
+
+                            <option
+                                value="Searching"
+                                {% if item.status == "Searching" %}
+                                    selected
+                                {% endif %}
+                            >
+
+                                Searching
+
+                            </option>
+
+
+                            <option
+                                value="Claimed"
+                                {% if item.status == "Claimed" %}
+                                    selected
+                                {% endif %}
+                            >
+
+                                Claimed
+
+                            </option>
+
+
+                            <option
+                                value="Resolved"
+                                {% if item.status == "Resolved" %}
+                                    selected
+                                {% endif %}
+                            >
+
+                                Resolved
+
+                            </option>
+
+
+                        </select>
+
+
+                        <button
+                            type="submit"
+                            class="update-btn"
+                        >
+
+                            Update Status
+
+                        </button>
+
+
+                    </form>
+
+
+                </div>
+
+
+            </div>
+
+
+        {% endfor %}
+
+
+    {% else %}
+
+
+        <div class="no-items">
+
+
+            <div class="icon">
+
+                🔎
+
+            </div>
+
+
+            <h2>
+
+                No Lost &amp; Found Reports
+
+            </h2>
+
+
+            <p>
+
+                No students have reported any lost or found items yet.
+
+            </p>
+
+
+        </div>
+
+
+    {% endif %}
+
+
+</div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Faculty Dashboard | CampusConnect</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #f4f7ff;
+        }
+
+        .navbar {
+            height: 70px;
+            padding: 0 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background: linear-gradient(
+                90deg,
+                #2563eb,
+                #6366f1,
+                #7c3aed
+            );
+
+            color: white;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: #ddd6fe;
+        }
+
+        .user-area {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .logout {
+            text-decoration: none;
+            color: white;
+
+            padding: 8px 15px;
+
+            border: 1px solid rgba(255,255,255,0.5);
+
+            border-radius: 8px;
+
+            font-size: 13px;
+        }
+
+        .main {
+            padding: 40px;
+        }
+
+        .welcome {
+            color: #172554;
+
+            font-size: 28px;
+
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #64748b;
+
+            margin-bottom: 30px;
+        }
+
+        .cards {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 8px 25px rgba(30, 64, 175, 0.08);
+
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .icon {
+            font-size: 28px;
+
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #1e293b;
+
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: #64748b;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+        }
+
+        @media (max-width: 800px) {
+
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .main {
+                padding: 25px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            Campus<span>Connect</span>
+        </div>
+
+        <div class="user-area">
+
+            <span>
+                Faculty
+            </span>
+
+            <a href="/logout" class="logout">
+                Logout
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main">
+
+        <h1 class="welcome">
+            Welcome, {{ name }}! 👋
+        </h1>
+
+        <p class="subtitle">
+            Manage student concerns and stay updated with campus activities.
+        </p>
+
+
+        <div class="cards">
+
+
+            <!-- Complaints -->
+
+            <div class="card">
+
+                <div class="icon">
+                    🛠️
+                </div>
+
+                <h3>
+                    Complaints
+                </h3>
+
+                <p>
+                    View and manage complaints related to your department.
+                </p>
+
+            </div>
+
+
+            <!-- Notices -->
+
+            <div class="card">
+
+                <div class="icon">
+                    📢
+                </div>
+
+                <h3>
+                    Notices
+                </h3>
+
+                <p>
+                    View important college announcements and updates.
+                </p>
+
+            </div>
+
+
+            <!-- Lost & Found -->
+
+            <div class="card">
+
+                <div class="icon">
+                    🔎
+                </div>
+
+                <h3>
+                    Lost & Found
+                </h3>
+
+                <p>
+                    View reported lost and found items on campus.
+                </p>
+
+            </div>
+
+
+            <!-- Service Requests -->
+
+            <div class="card">
+
+                <div class="icon">
+                    📄
+                </div>
+
+                <h3>
+                    Service Requests
+                </h3>
+
+                <p>
+                    Review and manage relevant college service requests.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

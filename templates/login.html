@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>CampusConnect | Login</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef4ff,
+                    #f5f0ff,
+                    #eaf7ff
+                );
+        }
+
+
+        /* =========================
+           MAIN CARD
+        ========================= */
+
+        .container {
+
+            width: 950px;
+
+            min-height: 570px;
+
+            display: flex;
+
+            background: white;
+
+            border-radius: 24px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 20px 60px
+                rgba(52, 80, 150, 0.18);
+        }
+
+
+        /* =========================
+           LEFT SECTION
+        ========================= */
+
+        .left-section {
+
+            width: 48%;
+
+            padding: 55px 48px;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #1d4ed8 0%,
+                    #3b82f6 45%,
+                    #bfdbfe 100%
+                );
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        /* Decorative shapes */
+
+        .circle-one {
+
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.10
+                );
+
+            top: -70px;
+
+            right: -60px;
+        }
+
+
+        .circle-two {
+
+            position: absolute;
+
+            width: 230px;
+            height: 230px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.08
+                );
+
+            bottom: -120px;
+
+            left: -90px;
+        }
+
+
+        /* Logo */
+
+        .logo {
+
+            position: relative;
+
+            font-size: 30px;
+
+            font-weight: 700;
+
+            letter-spacing: -1px;
+
+            margin-bottom: 45px;
+        }
+
+
+        .logo span {
+
+            color: #dbeafe;
+        }
+
+
+        /* Heading */
+
+        .left-section h1 {
+
+            position: relative;
+
+            font-size: 35px;
+
+            line-height: 1.2;
+
+            margin-bottom: 18px;
+        }
+
+
+        .description {
+
+            position: relative;
+
+            font-size: 15px;
+
+            line-height: 1.7;
+
+            color: #eff6ff;
+
+            margin-bottom: 32px;
+        }
+
+
+        /* Features */
+
+        .feature {
+
+            position: relative;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            padding: 11px 14px;
+
+            margin-bottom: 12px;
+
+            border-radius: 12px;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.10
+                );
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.12
+                );
+
+            backdrop-filter: blur(5px);
+
+            transition: 0.3s;
+        }
+
+
+        .feature:hover {
+
+            transform: translateX(5px);
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.16
+                );
+        }
+
+
+        .feature-icon {
+
+            width: 40px;
+
+            height: 40px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 10px;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.16
+                );
+
+            font-size: 20px;
+        }
+
+
+        .feature-text strong {
+
+            display: block;
+
+            font-size: 14px;
+
+            margin-bottom: 3px;
+        }
+
+
+        .feature-text small {
+
+            color: #eff6ff;
+
+            font-size: 12px;
+        }
+
+
+        /* Copyright */
+
+        .copyright {
+
+            position: absolute;
+
+            bottom: 22px;
+
+            left: 48px;
+
+            font-size: 11px;
+
+            color: #eff6ff;
+        }
+
+
+        /* =========================
+           RIGHT SECTION
+        ========================= */
+
+        .right-section {
+
+            width: 52%;
+
+            padding: 55px 65px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+        }
+
+
+        .welcome {
+
+            font-size: 29px;
+
+            color: #172554;
+
+            margin-bottom: 7px;
+        }
+
+
+        .subtitle {
+
+            color: #64748b;
+
+            font-size: 14px;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* =========================
+           FORM
+        ========================= */
+
+        form {
+
+            width: 100%;
+        }
+
+
+        .label {
+
+            display: block;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            color: #334155;
+
+            margin-bottom: 10px;
+        }
+
+
+        /* Roles */
+
+        .roles {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .role {
+
+            flex: 1;
+
+            padding: 13px 8px;
+
+            border:
+                1px solid
+                #dbe3f0;
+
+            border-radius: 10px;
+
+            text-align: center;
+
+            cursor: pointer;
+
+            color: #475569;
+
+            font-size: 13px;
+
+            transition: 0.25s;
+
+            background: white;
+        }
+
+
+        .role:hover {
+
+            border-color: #3b82f6;
+
+            color: #2563eb;
+
+            background: #f8fbff;
+        }
+
+
+        .role input {
+
+            margin-right: 5px;
+
+            accent-color: #2563eb;
+        }
+
+
+        /* Input */
+
+        .input-group {
+
+            margin-bottom: 20px;
+        }
+
+
+        .input {
+
+            width: 100%;
+
+            padding: 14px 15px;
+
+            border:
+                1px solid
+                #d7deea;
+
+            border-radius: 10px;
+
+            outline: none;
+
+            font-size: 14px;
+
+            color: #1e293b;
+
+            transition: 0.25s;
+        }
+
+
+        .input:focus {
+
+            border-color: #3b82f6;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(
+                    59,
+                    130,
+                    246,
+                    0.10
+                );
+        }
+
+
+        /* Login Button */
+
+        .login-btn {
+
+            width: 100%;
+
+            padding: 14px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #2563eb,
+                    #3b82f6
+                );
+
+            box-shadow:
+                0 8px 20px
+                rgba(
+                    37,
+                    99,
+                    235,
+                    0.22
+                );
+
+            transition: 0.25s;
+        }
+
+
+        .login-btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 12px 25px
+                rgba(
+                    37,
+                    99,
+                    235,
+                    0.30
+                );
+        }
+
+
+        /* Error */
+
+        .error {
+
+            background: #fef2f2;
+
+            color: #b91c1c;
+
+            border:
+                1px solid
+                #fecaca;
+
+            padding: 10px 12px;
+
+            border-radius: 8px;
+
+            font-size: 13px;
+
+            margin-bottom: 18px;
+        }
+
+
+        /* Register */
+
+        .register-text {
+
+            text-align: center;
+
+            margin-top: 20px;
+
+            font-size: 13px;
+
+            color: #64748b;
+        }
+
+
+        .register-link {
+
+            color: #2563eb;
+
+            text-decoration: none;
+
+            font-weight: 600;
+        }
+
+
+        .register-link:hover {
+
+            text-decoration: underline;
+        }
+
+
+        /* Footer */
+
+        .right-footer {
+
+            text-align: center;
+
+            margin-top: 25px;
+
+            font-size: 11px;
+
+            color: #94a3b8;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .container {
+
+                width: 94%;
+
+                flex-direction: column;
+            }
+
+
+            .left-section,
+            .right-section {
+
+                width: 100%;
+            }
+
+
+            .left-section {
+
+                padding: 40px;
+            }
+
+
+            .right-section {
+
+                padding: 40px;
+            }
+
+
+            .copyright {
+
+                position: static;
+
+                margin-top: 25px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="container">
+
+
+        <!-- =========================
+             LEFT SECTION
+        ========================= -->
+
+        <div class="left-section">
+
+
+            <div class="circle-one"></div>
+
+            <div class="circle-two"></div>
+
+
+            <div class="logo">
+
+                Campus<span>Connect</span>
+
+            </div>
+
+
+            <h1>
+
+                One Campus.<br>
+                Connected Together.
+
+            </h1>
+
+
+            <p class="description">
+
+                Your all-in-one platform for campus support,
+                communication and essential college services.
+
+            </p>
+
+
+            <!-- Feature 1 -->
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🛠
+                </div>
+
+                <div class="feature-text">
+
+                    <strong>
+                        Smart Support
+                    </strong>
+
+                    <small>
+                        Report issues and track their progress.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- Feature 2 -->
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    📢
+                </div>
+
+                <div class="feature-text">
+
+                    <strong>
+                        Instant Updates
+                    </strong>
+
+                    <small>
+                        Stay updated with important notices.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- Feature 3 -->
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    🔍
+                </div>
+
+                <div class="feature-text">
+
+                    <strong>
+                        Lost &amp; Found
+                    </strong>
+
+                    <small>
+                        Report or find lost campus items.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <!-- Feature 4 -->
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    👤
+                </div>
+
+                <div class="feature-text">
+
+                    <strong>
+                        Student Account
+                    </strong>
+
+                    <small>
+                        Create and manage your campus account.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="copyright">
+
+                © 2026 CampusConnect. All rights reserved.
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =========================
+             RIGHT SECTION
+        ========================= -->
+
+        <div class="right-section">
+
+
+            <h2 class="welcome">
+
+                Welcome Back!
+
+            </h2>
+
+
+            <p class="subtitle">
+
+                Login to continue to your CampusConnect account.
+
+            </p>
+
+
+            {% if error %}
+
+                <div class="error">
+
+                    {{ error }}
+
+                </div>
+
+            {% endif %}
+
+
+
+            <form
+                action="{{ url_for('login') }}"
+                method="POST"
+            >
+
+
+                <!-- ROLE -->
+
+                <label class="label">
+
+                    Login as
+
+                </label>
+
+
+                <div class="roles">
+
+
+                    <label class="role">
+
+                        <input
+                            type="radio"
+                            name="role"
+                            value="student"
+                            checked
+                        >
+
+                        Student
+
+                    </label>
+
+
+                    <label class="role">
+
+                        <input
+                            type="radio"
+                            name="role"
+                            value="admin"
+                        >
+
+                        Admin
+
+                    </label>
+
+
+                </div>
+
+
+
+                <!-- EMAIL -->
+
+                <div class="input-group">
+
+                    <label class="label">
+
+                        Email Address
+
+                    </label>
+
+
+                    <input
+                        type="email"
+                        name="email"
+                        class="input"
+                        placeholder="Enter your email address"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- PASSWORD -->
+
+                <div class="input-group">
+
+                    <label class="label">
+
+                        Password
+
+                    </label>
+
+
+                    <input
+                        type="password"
+                        name="password"
+                        class="input"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- LOGIN -->
+
+                <button
+                    type="submit"
+                    class="login-btn"
+                >
+
+                    Login →
+
+                </button>
+
+
+            </form>
+
+
+
+            <!-- REGISTER -->
+
+            <p class="register-text">
+
+                New student?
+
+                <a
+                    href="{{ url_for('register') }}"
+                    class="register-link"
+                >
+
+                    Create an account
+
+                </a>
+
+            </p>
+
+
+            <p class="right-footer">
+
+                CampusConnect • College Support Portal • 2026
+
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>
